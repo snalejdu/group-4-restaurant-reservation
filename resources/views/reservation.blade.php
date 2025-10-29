@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div>
+        <a href="/tables" class="btn btn-warning mx-2">View Tables</a>
+        <a href="/customers" class="btn btn-success mx-2">View Customers</a>
+        <a href="/reservations" class="btn btn-primary mx-2">View Reservations</a>
+    </div>
 <div class="bg-white shadow rounded p-4">
     <h2 class="text-center mb-4 text-dark">Reservation List</h2>
 
