@@ -1,30 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Table;
-use App\Models\Customer;
-use App\Models\Reservation;
+use App\Http\Controllers\RestaurantController;
 
-// Home Page
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [RestaurantController::class, 'home']);
+Route::get('/tables', [RestaurantController::class, 'tables']);
+Route::get('/customers', [RestaurantController::class, 'customers']);
+Route::get('/reservations', [RestaurantController::class, 'reservations']);
 
-// Tables Page
-Route::get('/tables', function () {
-    $tables = Table::all(); // Get all data from "tables" table
-    return view('tables', ['tables' => $tables]);
-});
-
-// Customers Page
-Route::get('/customers', function () {
-    $customers = Customer::all(); // Get all data from "customers" table
-    return view('customer', ['customers' => $customers]);
-});
-
-// Reservations Page
-Route::get('/reservations', function () {
-    // Get all reservations, including related table and customer data
-    $reservations = Reservation::with(['table', 'customer'])->get();
-    return view('reservation', ['reservations' => $reservations]);
-});
